@@ -130,3 +130,22 @@ input:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0px 1000px rgb(0, 195, 255) inset;
     transition: background-color 5000s ease-in-out 0s;
 }
+
+.start_text {
+    margin: 0% 5%;
+    text-align: center;
+    font-size: 300%;
+}
+
+.start_buttons {
+    text-decoration: none;
+    color: rgb(75, 75, 75);
+    display: inline-block;
+    transition: 0.2s;
+    margin-top: 3%;
+}
+
+
+.start_buttons:hover {
+    transform: scale(1.1);
+}
