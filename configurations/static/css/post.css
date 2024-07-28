@@ -1,0 +1,386 @@
+.add_post_form {
+    margin: 1%;
+    text-align: center;
+    font-size: 200%;
+}
+
+.add_post_button {
+    margin: 1%;
+    text-align: center;
+}
+
+#title {
+    width: 94%;
+    font-size: 120%;
+    padding: 3%;
+    border-radius: 20px;
+    border: solid black 2px;
+    background-color: rgb(0, 195, 255);
+    transition: 0.2s;
+}
+
+#main {
+    width: 94%;
+    min-width: 94%;
+    height: 400px;
+    min-height: 400px;
+    font-size: 100%;
+    padding: 2%;
+    border: solid black 2px;
+    border-radius: 10px;
+    background-color: rgb(0, 195, 255);
+    transition: 0.2s;
+}
+
+#title:hover, #main:hover {
+    transform: scale(1.01);
+}
+
+#title:focus, #main:focus {
+    background-color: rgb(53, 201, 247);
+}
+
+.post_card {
+    background-color: rgb(0, 217, 255);
+    border: solid blue 4px;
+    margin: 3% 20%;
+    height: 50%;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    border-radius: 20px;
+}
+
+.post_card > div {
+    margin: 1%;
+}
+
+.main_part {
+    padding: 1%;
+    grid-column: 1 / 3;
+    font-size: 175%;
+    color: rgb(233, 124, 0);
+}
+
+.title_card {
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    word-break: break-all;
+    font-size: 300%;
+    color: rgb(168, 15, 15);
+}
+
+.likes_card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    word-break: break-all;
+    font-size: 130%;
+    color: rgb(21, 83, 21);
+}
+
+.date_card {
+    text-align: right;
+    word-break: break-all;
+    padding: 1%;
+    font-size: 150%;
+    color: rgb(21, 83, 21);
+}
+
+.page_buttons {
+    padding: 2% 5%;
+}
+
+.post_avatar {
+    text-align: center;
+    justify-content: center;
+    padding: 2%;
+    font-size: 150%;
+    font-weight: bold;
+    word-break: break-all;
+}
+
+.post_avatar_button {
+    text-decoration: none;
+    color: rgb(21, 83, 21);
+    transition: 0.2s;
+    display: inline-block;
+}
+
+.post_avatar_button_in_cards {
+    text-decoration: none;
+    color: black;
+    transition: 0.2s;
+    display: inline-block;
+}
+
+.post_avatar_button_in_cards:hover {
+    transform: scale(1.1);
+}
+
+.post_avatar_button:hover {
+    transform: scale(1.1);
+}
+
+.button_flex {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.page_button {
+    display: inline;
+    list-style-type: none;
+    margin: -1%;
+    font-size: 150%;
+    background-color: aqua;
+    border: solid black 2px;
+    padding: 15% 0%;
+}
+
+.total_button {
+    text-decoration: none;
+    font-size: 150%;
+    color: black;
+    transition: 0.2s;
+}
+
+.total_button:hover {
+    color: rgb(61, 61, 61);
+}
+
+.avatar_img {
+    width: 10vh;
+    height: 10vh;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    border: solid black 2px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.likes_button {
+    text-decoration: none;
+    color: rgb(255, 0, 0);
+    transition: 0.2s;
+}
+
+.likes_button:hover {
+    color: brown;
+}
+
+.card_buttons {
+    margin-right: 2%;
+    text-decoration: none;
+    display: inline-block;
+    background-color: rgb(82, 253, 196);
+    font-size: 80%;
+    padding: 1%;
+    border-radius: 15px;
+    border: solid white 2px;
+    color: white;
+    transition: 0.2s;
+}
+
+.card_buttons:hover {
+    transform: scale(1.1);
+    border-color: gray;
+    color: gray;
+}
+
+.post_card_text {
+    margin-right: 2%;
+    background-color: rgb(82, 253, 125);
+    font-size: 80%;
+    padding: 1%;
+    border-radius: 15px;
+    border: solid rgb(247, 115, 115) 2px;
+    color: rgb(247, 115, 115);
+}
+
+.user_card {
+    background-color: rgb(86, 235, 86);
+    border: solid green 3px;
+    border-radius: 20px;
+    margin: 3% 25%;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+.avatar_block {
+    display: flex;
+    justify-content: center;
+    padding: 5%;
+}
+
+.info_block {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.only_nick_info_block {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 500%;
+}
+
+.nick_label {
+    font-size: 250%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 150%;
+}
+
+.sub_buttons {
+    margin-right: 2%;
+    text-decoration: none;
+    display: inline-block;
+    background-color: rgb(82, 253, 196);
+    padding: 1%;
+    border-radius: 15px;
+    border: solid white 2px;
+    color: white;
+    transition: 0.2s;
+    
+}
+
+.sub_buttons:hover {
+    transform: scale(1.1);
+    border-color: gray;
+    color: gray;
+}
+
+.main_label {
+    font-size: 400%;
+    text-align: center;
+    margin-top: 2%;
+}
+
+.back_button {
+    position: fixed;
+    margin-left: 3%;
+    margin-top: -5%;
+    padding: 1%;
+    font-size: 150%;
+    border: double darkgreen 5px;
+    background-color: lightgreen;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.back_button:hover {
+    transform: scale(1.2);
+}
+
+.btn-up {
+    position: fixed;
+    background-color: #673ab7;
+    right: 20px;
+    bottom: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 50px;
+    margin-right: 2%;
+    margin-bottom: 4%;
+  }
+  
+  .btn-up::before {
+    content: "";
+    width: 40px;
+    height: 40px;
+    background: transparent no-repeat center center;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23fff' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z'/%3E%3C/svg%3E");
+  }
+  
+  .btn-up_hide {
+    display: none;
+  }
+  
+  @media (hover: hover) and (pointer: fine) {
+    .btn-up:hover {
+      background-color: #512da8; /* цвет заднего фона при наведении */
+    }
+  }
+
+.new_comment {
+    margin: 2% 15%;
+    padding: 2%;
+    background-color: rgb(154, 69, 250);
+    border: solid rgb(76, 0, 255) 5px;
+    border-radius: 50px;
+    text-align: center;
+}
+
+#comment {
+    display: inline-block;
+    max-width: 80%;
+    min-width: 80%;
+    min-height: 200px;
+    max-height: 200px;
+    background-color: rgb(0, 195, 255);
+    border: solid black 3px;
+    border-radius: 20px;
+    transition: 0.2s;
+    padding: 2%;
+    margin-bottom: 3%;
+    font-size: 150%;
+}
+
+#comment:hover {
+    transform: scale(1.01);
+}
+
+#comment:focus {
+    background-color: rgb(83, 215, 255);
+}
+
+.comment_card {
+    background-color: aqua;
+    padding: 2%;
+    border: solid blue 4px;
+    margin: 2% 20%;
+    width: 56%;
+    border-radius: 30px;
+}
+
+.comment_avatar {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    margin-bottom: 2%;
+}
+
+.comment_comment {
+    font-size: 200%;
+    color: rgb(233, 124, 0);
+}
+
+.comment_grid_comment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 400%;
+    color: darkgreen;
+}
+
+.comment_grid_avatar {
+    padding: 10px;
+}

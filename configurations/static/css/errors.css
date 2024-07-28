@@ -1,0 +1,32 @@
+.flash.success {
+    background-color: rgb(41, 253, 22);
+    font-size: 120%;
+    padding: 1%;
+    margin: 1%;
+    text-align: center;
+    border: solid, green, 3px;
+    color: green;
+    font-weight: 700;
+}
+
+.flash.error {
+    background-color: red;
+    font-size: 120%;
+    padding: 1%;
+    margin: 1%;
+    text-align: center;
+    border: solid, rgb(95, 11, 11), 3px;
+    color: rgb(95, 11, 11);
+    font-weight: 700;
+}
+
+.flash.light_error {
+    background-color: rgb(148, 143, 143);
+    font-size: 120%;
+    padding: 1%;
+    margin: 1%;
+    text-align: center;
+    border: solid, rgb(61, 60, 60), 3px;
+    color: rgb(61, 60, 60);
+    font-weight: 700;
+}

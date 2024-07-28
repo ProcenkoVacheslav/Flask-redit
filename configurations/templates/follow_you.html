@@ -1,0 +1,58 @@
+{% extends 'base.html' -%}
+
+{% block content -%}
+{{ super() }}
+
+{% for category, message in get_flashed_messages(True) -%}
+    <div class="flash {{ category }}">{{ message }}</div>
+{% endfor -%}
+
+{% if user -%}
+    <p class="main_label">Подписаны на {{ user }}</p>
+{% else -%}
+    <p class="main_label">На вас подписаны</p>
+{% endif -%}
+
+<input class="back_button" type="button" onclick="history.back();" value="Назад"/>
+
+{% for person in persons -%}
+    <div class="user_card">
+        <div class="avatar_block">
+            <p>{% if person.ProfileDB['avatar'] -%}
+                    <p> <img class="avatar_img" src="/posts/userava/{{ person.UsersDB['id'] }}"> </p>
+                {% else -%}
+                    <p><img class="avatar_img" src="{{ url_for('static', filename='img/default.png') }}"></p>
+                {% endif -%}
+            </p>
+        </div>
+
+       <div class="info_block">
+            <div class="nick_label">
+                <p>
+                    {% if person.UsersDB['id'] != me -%}
+                        <a class="post_avatar_button_in_cards" href="/profile/get_profile/{{ person.UsersDB['id'] }}">{{ person.UsersDB['name'] }}</a>
+                    {% else -%}
+                        <a class="post_avatar_button_in_cards" href="{{ url_for('profile.profile') }}">{{ person.UsersDB['name'] }}</a>
+                    {% endif -%}
+                </p>
+            </div>
+            <div class="buttons_block">
+                
+                {% if person.UsersDB.id == me -%}
+                    <span class="post_card_text">Это вы</span>
+                {% elif person.UsersDB.id in followers -%}
+                    <span class="post_card_text">Подписаны</span>
+                {% else -%}
+                    <a class="card_buttons" href="/posts/follow_follow_you/{{ person.UsersDB.id }}">Подписаться</a>
+                {% endif -%}
+
+            </div>
+       </div> 
+    </div>
+{% endfor -%}
+
+<div class="btn-up btn-up_hide"></div>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/button_up.js') }}"></script>
+
+{% endblock content -%}

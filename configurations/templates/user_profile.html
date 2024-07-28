@@ -1,0 +1,70 @@
+{% extends 'base.html' -%}
+
+{% block content -%}
+{{ super() }}
+
+{% for category, message in get_flashed_messages(True) -%}
+    <div class="flash {{ category }}">{{ message }}</div>
+{% endfor -%}
+
+<form action="{{ url_for('profile.upload') }}" method="post" enctype="multipart/form-data">
+
+    <input class="back_button" style="margin-top: 1%;" type="button" onclick="history.back();" value="Назад"/>
+    
+    <div class="profile_grid_contener">
+        
+        <div class="grid_avatar">
+            <div class="img">
+                {% if avatar -%}
+                    <p><img class="profile_img" src="{{ url_for('profile.userava') }}"></p>
+                {% else -%}
+                    <p><img class="profile_img" src="{{ url_for('static', filename='img/default.png') }}"></p>
+                {% endif -%}
+            </div>
+            <div class="folowers">
+                <p class="folowers_information">Подписан(а)</p> 
+                <p class="folowers_information"><a class="folowers_button" href="/profile/user_follow/{{ user_id }}">{{ my_folowers }}</a></p>
+                <p class="folowers_information">Подписаны</p> 
+                <p class="folowers_information"><a class="folowers_button" href="/profile/follow_user/{{ user_id }}">{{ folowers }}</a></p>
+                <p class="folowers_information">Всего записей</p>
+                <p class="folowers_information"><a type="submit" class="folowers_button" href="/profile/user_posts/{{ user_id }}">{{ posts_count }}</a></p>
+                <p class="folowers_information">Понравилось</p>
+                <p class="folowers_information"><a type="submit" class="folowers_button" href="/profile/user_like_posts/{{ user_id }}">{{ likes_count }}</a></p>
+            </div>
+            <div class="date_info">
+                <p>Является пользователем с {{ date }}</p>
+            </div>
+        </div>
+
+        <div class="grid_folowers">
+            <p class="about_information">О канале</p>
+
+            <div class="grid_folowers_main"> 
+                {% if chanel_info -%}
+                <p class="chanel_info">{{ chanel_info }}</p>
+                {% else -%}
+                <p class="chanel_info">Информация отсутствует</p>
+                {% endif -%}
+            </div>
+
+            <div class="buttom_block"></div>
+        </div>
+
+        <div class="grid_about_me">
+            <p class="profile_name">Информация о {{ user_data[0]['data'] }}</p>
+            <div class="grid_about_me_main">
+                {% for row in user_data -%}
+                    <p class="profile_info">{{ row['title'] }} 
+                        {% if row['data'] -%}
+                            <span class="span_data">{{ row['data'] }}</span>
+                        {% endif -%}
+                    </p>
+                {% endfor -%}
+            </div>
+            
+            <div class="change_block"></div>
+        </div>
+    </div>
+</form>
+
+{% endblock content -%}

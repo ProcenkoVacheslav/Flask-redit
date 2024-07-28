@@ -1,0 +1,21 @@
+{% extends 'base.html' -%}
+
+{% block content -%}
+{{ super() }}
+
+{% for category, message in get_flashed_messages(True) -%}
+    <div class="flash {{ category }}">{{ message }}</div>
+{% endfor -%}
+
+<input class="back_button" style="margin-top: 1%;" type="button" onclick="history.back();" value="Назад"/>
+
+<div class="data_form">
+    <form action="{{ url_for('profile.change_chanel_information') }}" method="post">
+        {{ form.hidden_tag() }}
+
+        <p class="form_data_labels">{{ form.about_channel.label() }}</p> <p>{{ form.about_channel() }}</p>
+        <p class="submit_field">{{ form.submit() }}</p>
+    </form>
+</div>
+
+{% endblock content -%}

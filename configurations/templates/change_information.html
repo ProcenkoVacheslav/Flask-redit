@@ -1,0 +1,37 @@
+{% extends 'base.html' -%}
+
+{% block content -%}
+{{ super() }}
+
+{% for category, message in get_flashed_messages(True) -%}
+    <div class="flash {{ category }}">{{ message }}</div>
+{% endfor -%}
+
+<input class="back_button" style="margin-top: 1%;" type="button" onclick="history.back();" value="Назад"/>
+
+<div class="data_form">
+    <form action="{{ url_for('profile.change_information') }}" method="post">
+        {{ form.hidden_tag() }}
+
+        <p class="form_data_labels">{{ form.nick.label() }}</p> <p>{{ form.nick(value=current_datas['nick']) }}</p>
+        <p class="form_data_labels">{{ form.name.label() }}</p> <p>{{ form.name(value=current_datas['name']) }}</p>
+        <p class="form_data_labels">{{ form.sure_name.label() }}</p> <p>{{ form.sure_name(value=current_datas['sure_name']) }}</p>
+        <p class="form_data_labels">{{ form.age.label() }}</p> <p>{{ form.age(value=current_datas['age']) }}</p>
+        <p class="form_data_labels">{{ form.gender.label() }}</p> <p>{{ form.gender(value=current_datas['gender']) }}</p>
+        <p class="form_data_labels">{{ form.city.label() }}</p> <p>{{ form.city(value=current_datas['city']) }}</p>
+        <p class="form_data_labels">{{ form.about_yourself.label() }}</p> <p>{{ form.about_yourself() }}</p>
+        <p class="submit_field">{{ form.submit() }}</p>
+    </form>
+    <form action="{{ url_for('profile.upload') }}" method="post" enctype="multipart/form-data">
+        <p class="form_data_labels">Изменить аватар</p>
+
+        <label class="input-file">
+            <input type="file" name="file">		
+            <span>Выберите файл</span>
+        </label>
+
+        <p><input class="input_file" type="submit" value="Загрузить"></p>
+    </form>
+</div>
+
+{% endblock content -%}

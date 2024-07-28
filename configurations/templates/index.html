@@ -1,0 +1,17 @@
+{% extends 'base.html' -%}
+
+{% block content -%}
+{{ super() }}
+
+{% for category, message in get_flashed_messages(True) -%}
+    <div class="flash {{ category }}">{{ message }}</div>
+{% endfor -%}
+
+<p>Всем привет!!!</p>
+<p>Это мой второй проект на тему web-приложений, написанный на микро фреймворке Flask. Следующий проект не скоро, 
+    да и написан он будет уже на новом для меня фреймворке Django.
+</p>
+<p><a href="">Ссылка на исходный код проекта</a></p>
+<p><a href="">Ссылка на мой GitHub</a></p>
+
+{% endblock content -%}

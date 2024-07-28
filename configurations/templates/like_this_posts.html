@@ -1,0 +1,48 @@
+{% extends 'base.html' -%}
+
+{% block content -%}
+{{ super() }}
+
+{% for category, message in get_flashed_messages(True) -%}
+    <div class="flash {{ category }}">{{ message }}</div>
+{% endfor -%}
+
+<p class="main_label">Понравилось</p>
+
+<input class="back_button" type="button" onclick="history.back();" value="Назад"/>
+
+{% for person in persons -%}
+    <div class="user_card">
+        <div class="avatar_block">
+            <p>{% if person.ProfileDB['avatar'] -%}
+                    <p> <img class="avatar_img" src="/posts/userava/{{ person.UsersDB['id'] }}"> </p>
+                {% else -%}
+                    <p><img class="avatar_img" src="{{ url_for('static', filename='img/default.png') }}"></p>
+                {% endif -%}
+            </p>
+        </div>
+
+       <div class="info_block">
+            <div class="nick_label">
+                <p> {{ person.UsersDB.name }}</p>
+            </div>
+            <div class="buttons_block">
+                
+                {% if person.UsersDB.id == me -%}
+                    <span class="post_card_text">Это вы</span>
+                {% elif person.UsersDB.id in followers -%}
+                    <span class="post_card_text">Подписаны</span>
+                {% else -%}
+                    <a class="card_buttons" href="/posts/follow_this_likes/{{ person.UsersDB.id }}/{{ cur_post }}">Подписаться</a>
+                {% endif -%}
+
+            </div>
+       </div> 
+    </div>
+{% endfor -%}
+
+<div class="btn-up btn-up_hide"></div>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/button_up.js') }}"></script>
+
+{% endblock content -%}

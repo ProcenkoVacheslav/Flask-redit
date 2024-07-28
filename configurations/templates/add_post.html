@@ -1,0 +1,20 @@
+{% extends 'base.html' -%}
+
+{% block content -%}
+{{ super() }}
+
+{% for category, message in get_flashed_messages(True) -%}
+    <div class="flash {{ category }}">{{ message }}</div>
+{% endfor -%}
+
+<form action="{{ url_for('post.add_post') }}" method="post">
+    {{ form.hidden_tag() }}
+
+    <div class="data_form">
+        <p class="add_post_form">{{ form.title.label() }}</p> <p class="add_post_form">{{ form.title() }}</p>
+        <p class="add_post_form">{{ form.main.label() }}</p> <p class="add_post_form">{{ form.main() }}</p>
+        <p class="add_post_button">{{ form.submit() }}</p>
+    </div>
+</form>
+
+{% endblock content -%}

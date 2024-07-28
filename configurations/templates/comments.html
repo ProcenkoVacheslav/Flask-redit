@@ -1,0 +1,50 @@
+{% extends 'base.html' -%}
+
+{% block content -%}
+{{ super() }}
+
+{% for category, message in get_flashed_messages(True) -%}
+    <div class="flash {{ category }}">{{ message }}</div>
+{% endfor -%}
+
+<input class="back_button" style="margin-top: 1%;" type="button" onclick="history.back();" value="Назад"/>
+
+<form action="/posts/comments/{{ post_id }}" method="post">
+    {{ form.hidden_tag() }}
+
+    <div class="new_comment"">
+        <p class="comment_main">{{ form.comment() }}</p>
+        <p>{{ form.submit() }}</p>
+    </div>
+</form>
+
+{% for comment in comments -%}
+    <div class="comment_card">
+        <div class="comment_avatar">
+            <div class="comment_grid_avatar">
+                {% if comment.ProfileDB['avatar'] -%}
+                    <p><img class="avatar_img" src="/posts/userava/{{ comment.UsersDB['id'] }}"> </p>
+                {% else -%}
+                    <p><img class="avatar_img" src="{{ url_for('static', filename='img/default.png') }}"></p>
+                {% endif -%}
+            </div>
+            <div class="comment_grid_comment">
+                {% if comment.UsersDB['id'] != me -%}
+                    <a class="post_avatar_button" href="/profile/get_profile/{{ comment.UsersDB['id'] }}">{{ comment.UsersDB['name'] }}</a>
+                {% else -%}
+                    <a class="post_avatar_button" href="{{ url_for('profile.profile') }}">{{ comment.UsersDB['name'] }}</a>
+                {% endif -%}
+            </div>
+        </div>
+        <hr width="100%" style="height: 2px; margin-bottom: 3%;" color="blue" >
+        <div class="comment_comment">
+            <p>{{ comment.CommentsDB['comment'] }}</p>
+        </div>    
+    </div>
+{% endfor -%}
+
+<div class="btn-up btn-up_hide"></div>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/button_up.js') }}"></script>
+
+{% endblock content -%}

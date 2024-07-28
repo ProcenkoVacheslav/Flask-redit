@@ -1,0 +1,55 @@
+{% extends 'base.html' -%}
+{% import '_macros.html' as macros -%}
+
+{% block content -%}
+{{ super() }}
+
+{% for category, message in get_flashed_messages(True) -%}
+    <div class="flash {{ category }}">{{ message }}</div>
+{% endfor -%}
+
+<input class="back_button" style="margin-top: 1%;" type="button" onclick="history.back();" value="Назад"/>
+
+{% for post in posts -%}
+    <div class="post_card">
+        <div class="post_avatar">
+            {% if post.ProfileDB['avatar'] -%}
+                <p> <img class="avatar_img" src="/posts/userava/{{ post.UsersDB['id'] }}"> </p>
+            {% else -%}
+                <p><img class="avatar_img" src="{{ url_for('static', filename='img/default.png') }}"></p>
+            {% endif -%}
+            
+            <p> {{ post.UsersDB['name'] }} </p>
+        </div>
+        
+        <div class="title_card">
+            <p> {{ post.PostsDB['title'] }} </p>
+        </div>
+
+        <div class="main_part">
+            <hr width="100%" style="height: 2px; margin-bottom: 3%;" color="blue" >
+            <p> {{ post.PostsDB['main'] }} </p>
+            <hr width="100%" style="margin-top: 3%; height: 2px;" color="blue" >
+        </div>
+
+        <div class="likes_card">
+            <p> <span style="color: rgb(187, 255, 0);">Нравится</span> <a class="likes_button" href="/posts/likes_this_post/{{ post.PostsDB['id'] }}">{{ post.PostsDB['likes'] }}</a></p>
+        </div>
+
+        <div class="date_card">
+            <p><a class="card_buttons" href="/posts/comments/{{ post.PostsDB['id'] }}">Коментарии ({{ post.PostsDB['comments'] }})</a>
+               <span style="font-size: 80%;">{{ post.PostsDB['fake_date'] }}</span></p>
+        </div>
+        
+    </div>
+{% endfor -%}
+
+<div class="btn-up btn-up_hide"></div>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/button_up.js') }}"></script>
+
+<div class="page_buttons">
+    {{ macros.pagination_widget(pagination, '.profile') }}
+</div>
+
+{% endblock content -%}
